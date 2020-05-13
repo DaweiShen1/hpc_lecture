@@ -1,5 +1,5 @@
 # hpc_lecture
-
+Name:Shen Dawei   Student ID:19M18174
 |          | Topic                                | Sample code               |
 | -------- | ------------------------------------ | ------------------------- |
 | Class 1  | Introduction to parallel programming |                           |
