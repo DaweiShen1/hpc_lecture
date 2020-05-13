@@ -16,13 +16,19 @@ int main() {
   for (int i=0; i<range; i++) {
     bucket[i] = 0;
   }
-  for (int i=0; i<n; i++) {
+  #pragma omp parallel
+  #pragma omp sections firstprivate(bucket)
+  {
+    #pragma omp section 	
+    for (int i=0; i<n; i++) {
     bucket[key[i]]++;
-  }
-  for (int i=0, j=0; i<range; i++) {
-    for (; bucket[i]>0; bucket[i]--) {
-      key[j++] = i;
     }
+    #pragma omp section
+    for (int i=0, j=0; i<range; i++) {
+      for (; bucket[i]>0; bucket[i]--) {
+        key[j++] = i;
+      }
+    } 	
   }
 
   for (int i=0; i<n; i++) {
